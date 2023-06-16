@@ -72,9 +72,6 @@ function Search() {
           Nenhum álbum foi encontrado
         </h2>
       )}
-      {/* <h2>
-        { `Resultado de álbuns de: ${artistName}` }
-      </h2> */}
     </>
   );
 }
