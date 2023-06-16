@@ -6,17 +6,15 @@ function App() {
   return (
     <>
       <p>Trybetunes</p>
-      {/* <BrowserRouter> */}
       <Routes>
         <Route path="/" element={ <Login /> } />
         <Route path="/search" element={ <Search /> } />
-        {/* <Route path="/search" element={ <Album /> } />
-        <Route path="/favorites" element={ <Favorites /> } />
-        <Route path="/profile" element={ <Profile /> } />
-        <Route path="/profile/edit" element={ <ProfileEdit /> } />
-        <Route path="/*" element={ <NotFound /> } /> */}
+        {/* <Route path="/album/:id" element={ <Album /> } /> */}
+        {/* <Route path="/favorites" element={ <Favorites /> } /> */}
+        {/* <Route path="/profile" element={ <Profile /> } /> */}
+        {/* <Route path="/profile/edit" element={ <ProfileEdit /> } /> */}
+        {/* <Route path="/*" element={ <NotFound /> } /> */}
       </Routes>
-      {/* </BrowserRouter> */}
     </>
   );
 }
