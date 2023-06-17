@@ -13,7 +13,6 @@ function Album() {
 
   const fetchData = async () => {
     const data = await getMusics(`${id}`);
-    console.log(data);
     setIsLoading(false);
     setAlbum(data[0]);
     setSongs(data.filter((el, index) => (index !== 0)) as SongType[]);
