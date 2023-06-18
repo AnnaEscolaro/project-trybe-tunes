@@ -1,7 +1,17 @@
+import { useState } from 'react';
 import { SongType } from '../../types';
+import emptyHeart from '../../images/empty_heart.png';
+import fullHeart from '../../images/checked_heart.png';
 
 function MusicCard(props: SongType) {
-  const { trackName, previewUrl } = props;
+  const [checkBox, setCheckBox] = useState(false);
+  const { trackName, previewUrl, trackId } = props;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckBox(event.target.checked);
+  };
+
+  console.log(checkBox);
 
   return (
     <div>
@@ -14,6 +24,17 @@ function MusicCard(props: SongType) {
         <code>audio</code>
         .
       </audio>
+      <label data-testid={ `checkbox-music-${trackId}` }>
+        {
+          checkBox
+            ? <img src={ fullHeart } alt="favorite" />
+            : <img src={ emptyHeart } alt="favorite" />
+        }
+        <input
+          type="checkbox"
+          onChange={ handleChange }
+        />
+      </label>
     </div>
   );
 }

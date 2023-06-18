@@ -3,6 +3,7 @@ import Login from './pages/login';
 import Search from './pages/search/search';
 import Album from './pages/album/album';
 import Layout from './components/Layout';
+import Favorites from './pages/favorites/favorites';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/search" element={ <Search /> } />
           <Route path="/album/:id" element={ <Album /> } />
         </Route>
-        {/* <Route path="/favorites" element={ <Favorites /> } /> */}
+        <Route path="/favorites" element={ <Favorites /> } />
         {/* <Route path="/profile" element={ <Profile /> } /> */}
         {/* <Route path="/profile/edit" element={ <ProfileEdit /> } /> */}
         {/* <Route path="/*" element={ <NotFound /> } /> */}
