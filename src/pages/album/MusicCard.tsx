@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SongType } from '../../types';
 import emptyHeart from '../../images/empty_heart.png';
 import fullHeart from '../../images/checked_heart.png';
+import { addSong, removeSong } from '../../services/favoriteSongsAPI';
 
 function MusicCard(props: SongType) {
   const [checkBox, setCheckBox] = useState(false);
   const { trackName, previewUrl, trackId } = props;
 
+  useEffect(() => {
+    const handleFavoriteSong = async () => {
+      if (checkBox) {
+        const addData = await addSong({ trackId, trackName, previewUrl });
+        return addData;
+      }
+      const removeData = await removeSong({ trackId, trackName, previewUrl });
+      return removeData;
+    };
+    handleFavoriteSong();
+  }, [checkBox, previewUrl, trackId, trackName]);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckBox(event.target.checked);
   };
-
-  console.log(checkBox);
 
   return (
     <div>
