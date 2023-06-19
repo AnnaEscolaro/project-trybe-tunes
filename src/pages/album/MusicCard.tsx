@@ -4,9 +4,10 @@ import emptyHeart from '../../images/empty_heart.png';
 import fullHeart from '../../images/checked_heart.png';
 import { addSong, removeSong } from '../../services/favoriteSongsAPI';
 
-function MusicCard(props: SongType) {
+function MusicCard(props: SongType | any) {
   const [checkBox, setCheckBox] = useState(false);
-  const { trackName, previewUrl, trackId } = props;
+  const { trackName, previewUrl, trackId, isFavorite } = props;
+  console.log(isFavorite);
 
   useEffect(() => {
     const handleFavoriteSong = async () => {
@@ -37,12 +38,13 @@ function MusicCard(props: SongType) {
       </audio>
       <label data-testid={ `checkbox-music-${trackId}` }>
         {
-          checkBox
+          checkBox || isFavorite
             ? <img src={ fullHeart } alt="favorite" />
             : <img src={ emptyHeart } alt="favorite" />
         }
         <input
           type="checkbox"
+          defaultChecked={ isFavorite }
           onChange={ handleChange }
         />
       </label>
