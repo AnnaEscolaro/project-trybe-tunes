@@ -7,7 +7,6 @@ import { addSong, removeSong } from '../../services/favoriteSongsAPI';
 function MusicCard(props: SongType | any) {
   const [checkBox, setCheckBox] = useState(false);
   const { trackName, previewUrl, trackId, isFavorite } = props;
-  console.log(isFavorite);
 
   useEffect(() => {
     const handleFavoriteSong = async () => {

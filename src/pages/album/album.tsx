@@ -5,7 +5,6 @@ import loading from '../../loading';
 import { AlbumType, SongType } from '../../types';
 import MusicCard from './MusicCard';
 import { getFavoriteSongs } from '../../services/favoriteSongsAPI';
-import fullHeart from '../../images/checked_heart.png';
 
 function Album() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,13 +29,13 @@ function Album() {
   const handleFavoritedSongs = async () => {
     setIsLoading(true);
     const favSongs = await getFavoriteSongs();
-    setFavoriteSongs(favSongs, ...favoriteSongs);
+    setFavoriteSongs(favSongs);
     setIsLoading(false);
   };
 
   useEffect(() => {
     handleFavoritedSongs();
-  },[]);
+  }, []);
 
   console.log(favoriteSongs);
 
