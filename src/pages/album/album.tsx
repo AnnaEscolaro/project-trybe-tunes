@@ -14,6 +14,7 @@ function Album() {
   const { id } = useParams();
 
   const fetchData = async () => {
+    await handleFavoriteSongs();
     const data = await getMusics(`${id}`);
     setIsLoading(false);
     setAlbum(data[0]);
@@ -26,18 +27,10 @@ function Album() {
     }
   });
 
-  const handleFavoritedSongs = async () => {
-    setIsLoading(true);
+  const handleFavoriteSongs = async () => {
     const favSongs = await getFavoriteSongs();
     setFavoriteSongs(favSongs);
-    setIsLoading(false);
   };
-
-  useEffect(() => {
-    handleFavoritedSongs();
-  }, []);
-
-  console.log(favoriteSongs);
 
   if (isLoading) {
     return loading();
@@ -52,13 +45,13 @@ function Album() {
         </>
       )}
 
-      { songs.map((el) => (
+      { songs.map((song) => (
         <MusicCard
-          key={ el.trackId }
-          previewUrl={ el.previewUrl }
-          trackId={ el.trackId }
-          trackName={ el.trackName }
-          isFavorite={ favoriteSongs.find((element) => element.trackId === el.trackId) }
+          key={ song.trackId }
+          previewUrl={ song.previewUrl }
+          trackId={ song.trackId }
+          trackName={ song.trackName }
+          isFavorite={ favoriteSongs.some((favSong) => favSong.trackId === song.trackId) }
         />
       ))}
     </>
