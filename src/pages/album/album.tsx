@@ -23,9 +23,7 @@ function Album() {
   };
 
   useEffect(() => {
-    // if (!album && songs.length === 0) {
     fetchData();
-    // }
   }, []);
 
   const handleFavoriteSongs = async () => {

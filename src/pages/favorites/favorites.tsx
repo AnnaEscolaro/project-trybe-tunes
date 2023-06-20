@@ -16,9 +16,7 @@ function Favorites() {
   };
 
   useEffect(() => {
-    // if (favoritedSongs.length === 0) {
     handleFavoriteSongs();
-    // }
   }, []);
 
   if (isLoading) {
