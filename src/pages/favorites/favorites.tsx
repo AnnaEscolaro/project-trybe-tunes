@@ -7,7 +7,6 @@ import MusicCard from '../album/MusicCard';
 function Favorites() {
   const [isLoading, setIsLoading] = useState(true);
   const [favoritedSongs, setFavoritedSongs] = useState<SongType[]>([]);
-  //   const [statusFavorite, setStatusFavorite] = useState(true);
 
   const handleFavoriteSongs = async () => {
     setIsLoading(true);
@@ -25,8 +24,6 @@ function Favorites() {
   if (isLoading) {
     return loading();
   }
-
-  console.log(favoritedSongs);
 
   return (
     <>
