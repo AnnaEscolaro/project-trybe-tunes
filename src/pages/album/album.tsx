@@ -7,13 +7,14 @@ import MusicCard from './MusicCard';
 import { getFavoriteSongs } from '../../services/favoriteSongsAPI';
 
 function Album() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [album, setAlbum] = useState<AlbumType>();
   const [songs, setSongs] = useState<SongType[]>([]);
   const [favoriteSongs, setFavoriteSongs] = useState<SongType[]>([]);
   const { id } = useParams();
 
   const fetchData = async () => {
+    setIsLoading(true);
     await handleFavoriteSongs();
     const data = await getMusics(`${id}`);
     setIsLoading(false);
@@ -22,10 +23,10 @@ function Album() {
   };
 
   useEffect(() => {
-    if (!album && songs.length === 0) {
-      fetchData();
-    }
-  });
+    // if (!album && songs.length === 0) {
+    fetchData();
+    // }
+  }, []);
 
   const handleFavoriteSongs = async () => {
     const favSongs = await getFavoriteSongs();

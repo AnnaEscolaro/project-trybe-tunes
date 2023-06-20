@@ -5,7 +5,7 @@ import loading from '../../loading';
 import MusicCard from '../album/MusicCard';
 
 function Favorites() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [favoritedSongs, setFavoritedSongs] = useState<SongType[]>([]);
 
   const handleFavoriteSongs = async () => {
@@ -16,10 +16,10 @@ function Favorites() {
   };
 
   useEffect(() => {
-    if (favoritedSongs.length === 0) {
-      handleFavoriteSongs();
-    }
-  });
+    // if (favoritedSongs.length === 0) {
+    handleFavoriteSongs();
+    // }
+  }, []);
 
   if (isLoading) {
     return loading();
