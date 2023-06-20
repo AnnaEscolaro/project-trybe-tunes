@@ -30,6 +30,7 @@ function Album() {
   const handleFavoriteSongs = async () => {
     const favSongs = await getFavoriteSongs();
     setFavoriteSongs(favSongs);
+    console.log(favSongs);
   };
 
   if (isLoading) {
