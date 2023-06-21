@@ -14,7 +14,6 @@ function Profile() {
     setProfileData(userData);
     setIsLoading(false);
   };
-  console.log(profileData);
 
   useEffect(() => {
     fetchData();
